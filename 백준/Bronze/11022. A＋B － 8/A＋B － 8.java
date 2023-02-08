@@ -1,20 +1,26 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
 
-public class Main {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+public class Main{
+	public static void main(String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st;
+		String sum;
 		
-		int T = sc.nextInt();
-		int[] A = new int[T];
-		int[] B = new int[T];
-		int[] sum = new int[T];
+		int T = Integer.parseInt(br.readLine());
 		
 		for(int i=0; i<T; i++) {
-			A[i] = sc.nextInt();
-			B[i] = sc.nextInt();
-			sum[i] = A[i] + B[i];
-			
-			System.out.println("Case #"+(i+1)+": "+A[i]+" + "+B[i]+" = "+sum[i]);
+			sum = br.readLine();
+			st = new StringTokenizer(sum);
+			int A = Integer.parseInt(st.nextToken());
+			int B = Integer.parseInt(st.nextToken());
+			bw.write("Case #"+(i+1)+": "+A+" + "+B+" = "+(A+B)+"\n");
 		}
+		bw.close();
 	}
 }
