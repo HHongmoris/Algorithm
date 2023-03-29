@@ -1,0 +1,75 @@
+package swea;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class swea1247 {
+	static int N;
+	static int[] work;
+	static int[] home;
+	static int[][] cust;
+	static int[][] custRe;
+	
+	static int min;
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		//테스트 케이스 수 입력
+		int T = sc.nextInt();
+		for(int t=1; t<=T; t++) {
+			//고객 수 N 입력
+			N = sc.nextInt();
+			//회사 좌표 2개 배열로 입력
+			work = new int[2];
+			for(int i=0; i<2; i++) {
+				work[i] = sc.nextInt();
+			}
+			//집 좌표 2개 배열로 입력
+			home = new int[2];
+			for(int i=0; i<2; i++) {
+				home[i] = sc.nextInt();
+			}
+			//고객 좌표 2차 배열로 입력
+			cust = new int[N][2];
+			for(int i=0; i<N; i++) {
+				cust[i][0] = sc.nextInt();
+				cust[i][1] = sc.nextInt();
+			}
+			min = Integer.MAX_VALUE;
+			custRe = new int[N][2];
+			
+			perm(0, 0);
+			
+			System.out.println("#"+t+" "+min);
+			
+		}
+		
+		
+	}
+	
+	public static void perm(int idx, int vst) {
+		if(idx==N) {
+			int sum = 0;
+			sum += Math.abs(work[0]-custRe[0][0]) + Math.abs(work[1]-custRe[0][1]);
+			sum += Math.abs(custRe[N-1][0]-home[0]) + Math.abs(custRe[N-1][1]-home[1]);
+			for(int i=0; i<N-1; i++) {
+				sum += Math.abs(custRe[i][0]-custRe[i+1][0]) + Math.abs(custRe[i][1]-custRe[i+1][1]);
+			}
+			if(sum<min) min = sum;
+			System.out.println(Arrays.toString(custRe));
+			return;
+		}
+		
+		for(int i=0; i<N; i++) {
+			if((vst&(1<<i))!=0) continue;
+			
+			custRe[idx][0] = custRe[i][0];
+			custRe[idx][1] = custRe[i][1];
+			
+			perm(idx+1, (vst|(1<<i)));
+		}
+		
+	}
+	
+	
+}

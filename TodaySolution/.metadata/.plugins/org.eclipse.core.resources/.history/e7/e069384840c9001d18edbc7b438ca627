@@ -1,0 +1,9 @@
+package swea;
+
+import java.util.Scanner;
+
+public class swea2806 {
+	public static void main(String[] args) {
+		Scanner sc = new 
+	}
+}

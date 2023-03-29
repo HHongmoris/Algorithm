@@ -1,0 +1,75 @@
+import java.util.Scanner;
+
+public class Solution {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int T = sc.nextInt();
+		for(int tc = 1; tc<=T; tc++) {
+			int N = sc.nextInt();
+			
+			// 처음 입력받을 것
+			int[][] arr = new int[N][N];
+			int[][] arr1 = new int[N][N];
+			int[][] arr2 = new int[N][N];
+			int[][] arr3 = new int[N][N];
+			
+			for(int i =0; i<N; i++) {
+				for(int j =0; j<N; j++) {
+					arr[i][j] = sc.nextInt();
+				}
+			}
+			
+			// 포가 움직 일 수 있는 공간을 모두 찾는다.
+			// 델타 배열을 사용해서 갈 수 있는 공간과 잡을 수 있는 공간 모두 2로 바꾼다.
+			
+			int[] dx = {0,0,1,-1};
+			int[] dy = {-1,1,0,0};
+			
+			boolean flag = true;
+			
+			// 처음 1 값을 만나고 그 다음 값부터 2로 바꿔주고  다시 1을 만나면 멈춘다.
+			// 모든 배열을 돌면서 값을 확인한다.
+			for(int i =0; i<N; i++) {
+				for(int j =0; j<N; j++) {
+					if(arr[i][j] == 2) {
+						for(int k = 1; k<N; k++) {
+						int x = i + dx[i] * k;
+						int y = j + dy[i] * k;
+						
+						if(x>=0 && y>=0 && x<N && y<N) {
+							//범위 안에 값이 와야하고
+							// 1을 만나고 그 값 뒤에 있는 친구들
+							// 1을 만나면 그 다음 값 부터 2를 입력해준다.
+							if(arr[x][y] == 1) {
+								// 돌리던 델타 값을 가져와서 돌려준다.
+								int xx = x + dx[i]*(k+1);
+								int yy = y + dy[i]*(k+1);
+								if(xx>=0 && yy>=0 && xx<N && yy<N) {
+								// 그리고 다시 1을 만나면 그 값은 멈춰야하며
+								// 이 값도 범위 안에서 돌아야한다.
+								}
+							
+						}
+						}
+						}
+					}
+
+					
+				}
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+		}
+
+		
+
+	}
+
+}

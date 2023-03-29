@@ -1,0 +1,16 @@
+package swea;
+
+import java.util.Scanner;
+
+public class swea2806 {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		//테스트 케이스 수 입력
+		int T = sc.nextInt();
+		for(int t=1; t<=T; t++) {
+			
+			
+			
+		}
+	}
+}

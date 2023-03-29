@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class Solution {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int T = sc.nextInt();
+		for(int tc = 1; tc<=T; tc++) {
+			int N = sc.nextInt();
+			
+			// 처음 입력받을 것
+			int[][] arr = new int[N][N];
+			int[][] arr1 = new int[N][N];
+			int[][] arr2 = new int[N][N];
+			int[][] arr3 = new int[N][N];
+			
+			for(int i =0; i<N; i++) {
+				for(int j =0; j<N; j++) {
+					arr[i][j] = sc.nextInt();
+				}
+			}
+			
+			// 포가 움직 일 수 있는 공간을 모두 찾는다.
+			// 델타 배열을 사용해서 갈 수 있는 공간과 잡을 수 있는 공간 모두 2로 바꾼다.
+			
+			int[] dx = {0,0,1,-1};
+			int[] dy = {-1,1,0,0};
+			
+			
+			
+			
+			
+			
+			
+			
+		}
+
+		
+
+	}
+
+}

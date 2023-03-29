@@ -1,0 +1,39 @@
+package swea;
+
+import java.util.Scanner;
+
+public class swea1247 {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		//테스트 케이스 수 입력
+		int T = sc.nextInt();
+		for(int t=1; t<=T; t++) {
+			//고객 수 N 입력
+			int N = sc.nextInt();
+			//회사 좌표 2개 배열로 입력
+			int[] work = new int[2];
+			for(int i=0; i<2; i++) {
+				work[i] = sc.nextInt();
+			}
+			//집 좌표 2개 배열로 입력
+			int[] home = new int[2];
+			for(int i=0; i<2; i++) {
+				home[i] = sc.nextInt();
+			}
+			//고객 좌표 2차 배열로 입력
+			int[][] cust = new int[N][2];
+			for(int i=0; i<N; i++) {
+				cust[i][0] = sc.nextInt();
+				cust[i][1] = sc.nextInt();
+			}
+			
+			
+		}
+		
+		
+	}
+	
+	public static void perm
+	
+	
+}

@@ -1,0 +1,125 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Solution {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		int T = sc.nextInt();
+		for (int tc = 1; tc <= T; tc++) {
+			// 지도의 크기
+			int N = sc.nextInt();
+			int[][] arr = new int[N][N];
+
+			for (int i = 0; i < N; i++) {
+				for (int j = 0; j < N; j++) {
+					arr[i][j] = sc.nextInt();
+				}
+			}
+
+			// 사과의 번호를 담을 칸을 만들어준다. 최대 10개고 0 값에 안들어가니까
+			// 널널하게 만듦.
+			int[] apple_x = new int[15];
+			int[] apple_y = new int[15];
+
+			// 값을 돌면서 0이 아닌 값들을 입력한다.
+			for (int i = 0; i < N; i++) {
+				for (int j = 0; j < N; j++) {
+					if (arr[i][j] != 0) {
+						// 0이 아니면 j의 값을 불러온다.
+						apple_x[arr[i][j]] = i;
+						apple_y[arr[i][j]] = j;
+					}
+				}
+			}
+
+			System.out.println(Arrays.toString(apple_x));
+			System.out.println(Arrays.toString(apple_y));
+
+			// 각 값을 카운트 해줄 친구.
+			int cnt = 1;
+			// 사과의 각 값들을 포문을 통해 돌려준다.
+			for (int i = 1; i < 15; i++) {
+				if (apple_x[i] != 0 && apple_x[i + 1] != 0 && apple_y[i] != 0 && apple_y[i + 1] != 0) {
+					
+					// 위에서 값이 들어올떄
+					if (apple_x[i - 1] < apple_x[i] && apple_y[i - 1] > apple_y[i]) {
+						// 왼쪽으로 가는경우
+						if (apple_y[i-1] > apple_y[i ]) {
+							cnt += 1;
+							// 왼쪽으로 가는데 값이 높은 경우
+							if (apple_x[i-1] > apple_x[i]) {
+								cnt += 1;
+							}
+
+						}
+						// 오른쪽으로 가는 경우
+						if(apple_y[i-1] < apple_y[i ]) {
+							cnt += 3;
+						}
+
+					}
+					System.out.println(cnt);
+
+					// 오른쪽에서 값이 들어올 때
+					if (apple_x[i - 1] < apple_x[i] && apple_y[i - 1] < apple_y[i]) {
+						// 아래로 갈때
+						if (apple_x[i-1] > apple_x[i ]) {
+							cnt += 1;
+							// 아래로 가는데 좀더 왼쪽인 경우
+							if (apple_y[i-1] > apple_y[i ]) {
+								cnt += 1;
+							}
+						}
+						// 위로 갈때
+						if(apple_x[i-1] < apple_x[i]) {
+							cnt += 3;
+						}
+
+					}
+					System.out.println(cnt);
+					// 아래서 값이 들어올 때
+					if (apple_x[i - 1] > apple_x[i] && apple_y[i - 1] > apple_y[i]) {
+						// 오른쪽인 경우
+						if (apple_y[i-1] < apple_y[i ]) {
+							cnt += 1;
+							// 오른쪽인데 아래로 가는경우
+							if (apple_x[i-1] < apple_x[i ]) {
+								cnt += 1;
+							}
+						}
+						// 왼쪽인 경우
+						if(apple_y[i-1] > apple_y[i ]) {
+							cnt += 3;
+						}
+
+					}
+					System.out.println(cnt);
+					// 왼쪽에서 값이 들어올 때
+					if (apple_x[i - 1] > apple_x[i] && apple_y[i - 1] < apple_y[i]) {
+						// 위로 올라가는 경우
+						if (apple_x[i-1] > apple_x[i ]) {
+							cnt += 1;
+							// 올라가는데 오른쪽인경우
+							if (apple_y[i-1] < apple_y[i ]) {
+								cnt += 1;
+							}
+
+						}
+						// 내려가는 경우
+						if(apple_x[i-1] < apple_x[i ]) {
+							cnt += 3;
+						}
+						System.out.println(cnt);
+					}
+					// 각 경우마다 3가지 케이스가 있다.
+
+				}
+			}
+			System.out.println("#" + tc + " "+ (cnt));
+
+		}
+
+	}
+
+}

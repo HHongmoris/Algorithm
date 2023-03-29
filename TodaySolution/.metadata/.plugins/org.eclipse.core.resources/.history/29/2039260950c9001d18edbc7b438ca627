@@ -1,0 +1,62 @@
+package boj;
+
+import java.util.Scanner;
+
+public class boj18111 {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		//N, M, B 입력
+		int N = sc.nextInt();
+		int M = sc.nextInt();
+		int B = sc.nextInt();
+		//땅의 높이 2차원 배열로 입력
+		//최대 최소 구하기
+		int[][] ground = new int[N][M];
+		int max = ground[0][0];
+		int min = ground[0][0];
+		for(int i=0; i<N; i++) {
+			for(int j=0; j<M; j++) {
+				ground[i][j] = sc.nextInt();
+				if(ground[i][j]>max) max = ground[i][j];
+				if(ground[i][j]<min) min = ground[i][j];
+			}
+		}
+		//최댓값에서 모두 뺸 값과 B와 비교
+		int blockP = 0;
+		int blockM = 0;
+
+		//걸리는 시간
+		
+		int[] time = new int[max-min+1];
+		int idx = 0;
+		int idxA = 0;
+		//땅의 높이
+		for(int h=min; h<=max; h++) {
+			for(int i=0; i<N; i++) {
+				for(int j=0; j<M; j++) {
+					if(h>=ground[i][j]) {
+						blockP += h - ground[i][j];						
+					}else blockM += ground[i][j] - h;
+				}
+			}
+			if(B+blockM>=blockP) {
+				time[idx] = blockP + 2*blockM;
+			}else {
+				time[idx] = 2*blockM;
+			}
+			idx++;
+		}
+		int minT = time[0];
+		for(int i=0; i<max-min+1; i++) {
+			if(minT>time[i]) {
+				minT = time[i];
+				idxA = i;
+			}
+				
+		}
+		int ans = min + idxA;
+		
+		System.out.println(minT+" "+idxA);
+		
+	}
+}

@@ -1,0 +1,48 @@
+package 정렬;
+
+public class 병합정렬01 {
+	
+	static int[] arr;
+	static int[] sortedArr;
+	public static void main(String[] args) {
+		
+	}
+	
+	//분할
+	public static void mergeSort(int[] arr, int L, int R) {
+		
+		if(L<R) {
+			int mid = (L+R)/2;
+			mergeSort(arr, L, mid);
+			mergeSort(arr, mid+1, R);
+		}
+	}
+	
+	//병합
+	public static void merge(int[] arr, int left, int mid, int right) {
+		int L = left;
+		int R = mid+1;
+		int idx = left;
+		
+		while(L<=mid && R<=right) {
+			if(arr[L]<=arr[R]) {
+				sortedArr[idx++] = arr[L++];
+			}else {
+				sortedArr[idx++] = arr[R++];
+			}
+		}
+		
+		if(L<=mid) {
+			for(int i=L; i<mid; i++) {
+				sortedArr[idx++] = arr[i];
+			}
+		}else {
+			for(int j=R; j<right; j++) {
+				sortedArr[idx++] = arr[j];
+			}
+		}
+		for(int i=left; i<right; i++) {
+			arr[i] = sortedArr[i];
+		}
+	}
+}
