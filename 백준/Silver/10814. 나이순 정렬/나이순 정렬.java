@@ -4,30 +4,57 @@ import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 public class Main {
+	public static class node{
+		int age;
+		String name;
+		
+		public node(int age, String name) {
+			super();
+			this.age = age;
+			this.name = name;
+		}
+
+		public int getAge() {
+			return age;
+		}
+
+		public void setAge(int age) {
+			this.age = age;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+		
+		
+
+	}
+	
 	public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         int N = sc.nextInt();
-
-        String[][] name = new String[N][2];
+        node[] people = new node[N];
         
         for(int i=0; i<N; i++) {
-        	for(int j=0; j<2; j++) {
-        		name[i][j] = sc.next();
-        	}
+        	people[i] = new node(sc.nextInt(), sc.next());
         }
         
-        Arrays.sort(name, new Comparator<String[]>() {
+        Arrays.sort(people, new Comparator<node>() {
+
 			@Override
-			public int compare(String[] o1, String[] o2) {
-				
-				return Integer.parseInt(o1[0]) - Integer.parseInt(o2[0]);
+			public int compare(node o1, node o2) {
+				return o1.getAge() - o2.getAge();
 			}
         	
 		});
         
         for(int i=0; i<N; i++) {
-        	System.out.println(name[i][0]+" "+name[i][1]);
+        	System.out.println(people[i].getAge()+" "+people[i].getName());
         }
     }
 }
