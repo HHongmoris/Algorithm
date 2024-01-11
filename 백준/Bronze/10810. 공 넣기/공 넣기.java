@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -7,10 +8,10 @@ public class Main {
         int N = sc.nextInt();
         int M = sc.nextInt();
 
-        int[] basket = new int[N+1];
+        int[] basket = new int[N];
         for(int t=0; t<M; t++){
-            int i = sc.nextInt();
-            int j = sc.nextInt();
+            int i = sc.nextInt()-1;
+            int j = sc.nextInt()-1;
             int k = sc.nextInt();
 
             for(int ball=i; ball<=j; ball++){
@@ -18,7 +19,7 @@ public class Main {
             }
         }
 
-        for(int i=1; i<=N; i++){
+        for(int i=0; i<N; i++){
             System.out.print(basket[i]+" ");
         }
     }
